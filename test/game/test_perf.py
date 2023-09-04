@@ -31,10 +31,11 @@ def main() -> None:
             core_game.turn()
             core_game.river()
             core_game.get_winner()
-        number_of_games += 1000
+        number_of_games += 1
         ts_curr = time.perf_counter()
     ts_end = time.perf_counter()
-    logging.info(f"[!] The current game is played at {number_of_games / (ts_end - ts_zero)} games per second (gps).")
+    logging.info(f"[!] The current game is played at {number_of_games / (ts_end - ts_zero)} kilo-games "
+                 f"per second (kgps).")
     logging.info(f"[-] Disconnected from test_perf.py v{__version__}")
     return None
 
