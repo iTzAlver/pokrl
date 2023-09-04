@@ -9,6 +9,7 @@ import logging
 import time
 from pokrl import CoreGame, __version__
 logging.basicConfig(level=logging.INFO)
+TIME_TO_PLAY = 10  # 10 minutes
 
 
 # - x - x - x - x - x - x - x - x - x - x - x - x - x - x - #
@@ -22,7 +23,7 @@ def main() -> None:
     ts_zero = time.perf_counter()
     ts_curr = ts_zero
     number_of_games = 0
-    while ts_curr - ts_zero < 60 * 3:
+    while ts_curr - ts_zero < TIME_TO_PLAY * 60:
         for i in range(1000):
             core_game.shuffle_deck()
             core_game.get_cards()
