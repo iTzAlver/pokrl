@@ -11,7 +11,7 @@
         <img src="https://img.shields.io/badge/tests-passed-green?color=green&style=plastic" /></a>
     <a href="https://github.com/iTzAlver/pokrl/blob/master/requirements.txt">
         <img src="https://img.shields.io/badge/requirements-pypi-red?color=red&style=plastic" /></a>
-    <a href="https://htmlpreview.github.io/?https://github.com/iTzAlver/pokrl/blob/master/doc/notebook/tutorial.ipynb">
+    <a href="https://github.com/iTzAlver/pokrl/blob/master/doc/notebook/tutorial.ipynb">
         <img src="https://img.shields.io/badge/doc-notebook-green?color=orange&style=plastic" /></a>
     <a href="https://github.com/iTzAlver/pokrl/releases/tag/0.0.0-release">
         <img src="https://img.shields.io/badge/release-N/A-white?color=black&style=plastic" /></a>
