@@ -9,6 +9,7 @@ __version__ = '0.1.0'
 # Get the current directory:
 __abs_path__ = os.path.abspath(__file__)
 __src_path__ = os.path.dirname(__abs_path__)
+__gui_cards_img__ = os.path.join(__src_path__, '../../doc/multimedia/cards/')
 # Set the environment variables:
 os.environ['PY_SA_SRC'] = __src_path__
 os.environ['PY_SA_VER'] = __version__

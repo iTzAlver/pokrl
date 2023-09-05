@@ -28,4 +28,4 @@ A Reinforcement Learning based approach for playing Poker.
 
 * The AI uses a single output regressor (SOR) to take actions in the game. Where 0 represents check/fold, and other 
 number represents the quantity that the AI wants to raise the bet.
-* The current game speed is around 32k gps (to be improved).
+* The current game speed is around 37.2 kgps (to be improved).

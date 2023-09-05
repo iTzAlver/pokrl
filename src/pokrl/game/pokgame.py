@@ -6,6 +6,7 @@
 # - x - x - x - x - x - x - x - x - x - x - x - x - x - x - #
 import numpy as np
 from ..__special__ import __version__
+from .decision_table import get_points
 
 
 # - x - x - x - x - x - x - x - x - x - x - x - x - x - x - #
@@ -37,8 +38,9 @@ class CoreGame:
         self.current_level = 0
         self.deck_pointer = 0
         self.table_cards = np.array([])
-        # + Create an array with 52 cards (from 1 to 12 and from 1 to 4):
-        self.__deck = np.reshape(np.array([[(j, i) for i in range(1, 12)] for j in range(4)]), (-1, 2))
+        # + Create an array with 52 cards (from 2 to 14 and from 1 to 4):
+        self.__deck = np.reshape(np.array([[(j, i) for i in range(2, 15)] for j in range(4)], dtype=np.int8),
+                                 (-1, 2))
         self.deck = None
         np.random.seed(self.__game_seed)
         self.shuffle_deck()
@@ -56,13 +58,15 @@ class CoreGame:
     def get_cards(self, number_of_current_players: int = 0):
         """
         This method returns a list of 2 cards from the deck for all players.
+        :param number_of_current_players: Number of players to deal cards.
         :return: List of 2 cards from the deck for each active player.
         """
         # Get the number of cards to deal:
         number_of_current_players = self.number_of_players if number_of_current_players == 0 \
             else number_of_current_players
         hand_cards = self.deck[0:number_of_current_players * 2]
-        hands = np.array([hand_cards[0::2], hand_cards[1::2]])
+        hands = np.concatenate([hand_cards[0::2], hand_cards[1::2]], axis=1)
+        hands = np.reshape(hands, (number_of_current_players, 2, 2))
         # Update deck pointer.
         self.deck_pointer += number_of_current_players * 2
         return hands
@@ -103,9 +107,13 @@ class CoreGame:
         :param hands: List of hands to compare.
         :return: Winner of the game.
         """
-        # Get the best hand:
-        return 0
-
+        # Get the points of the hand:
+        points = list()
+        for hand in hands:
+            points.append(get_points(hand, self.table_cards))
+        # Get the argument of the winner:
+        winner = np.argmax(points)
+        return winner, points
 
     def __repr__(self):
         return f'CoreGame class instance v{self.__version__}'

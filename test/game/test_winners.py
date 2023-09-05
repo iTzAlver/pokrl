@@ -6,7 +6,6 @@
 # - x - x - x - x - x - x - x - x - x - x - x - x - x - x - #
 # Import statements:
 import logging
-import time
 from pokrl import CoreGame, __version__
 logging.basicConfig(level=logging.INFO)
 TIME_TO_PLAY = 10  # 10 minutes
@@ -16,27 +15,20 @@ TIME_TO_PLAY = 10  # 10 minutes
 #                        FUNCTION DEF                       #
 # - x - x - x - x - x - x - x - x - x - x - x - x - x - x - #
 def main() -> None:
-    logging.info(f"[+] Connected to test_perf.py v{__version__}")
+    logging.info(f"[+] Connected to test_winners.py v{__version__}")
     # Create a game:
     core_game = CoreGame(number_of_players=9, level_up_each=4, initial_stack=250)
     # Play hands:
-    ts_zero = time.perf_counter()
-    ts_curr = ts_zero
-    number_of_games = 0
-    while ts_curr - ts_zero < TIME_TO_PLAY * 60:
-        for i in range(1000):
-            core_game.shuffle_deck()
-            hands = core_game.get_cards()
-            core_game.flop()
-            core_game.turn()
-            core_game.river()
-            core_game.get_winner(hands)
-        number_of_games += 1
-        ts_curr = time.perf_counter()
-    ts_end = time.perf_counter()
-    logging.info(f"[!] The current game is played at {number_of_games / (ts_end - ts_zero)} kilo-games "
-                 f"per second (kgps).")
-    logging.info(f"[-] Disconnected from test_perf.py v{__version__}")
+    for i in range(10):
+        core_game.shuffle_deck()
+        hands = core_game.get_cards()
+        core_game.flop()
+        core_game.turn()
+        core_game.river()
+        _, points = core_game.get_winner(hands)
+        logging.info(f"[+] The winner is: {_}:{points}"
+                     f"\nHands: {hands}\nTable: {core_game.table_cards}")
+    logging.info(f"[-] Disconnected from test_winners.py v{__version__}")
     return None
 
 
