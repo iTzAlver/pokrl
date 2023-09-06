@@ -39,7 +39,8 @@ def check_pair(full_hand: np.ndarray) -> float:
     for card_0 in full_hand:
         for card_1 in full_hand:
             if card_0[1] == card_1[1] and not np.equal(card_0, card_1).all():
-                return 1 + card_0[1] / 15
+                hc = sum([card / (15 * 10 ** (i + 1)) for i, card in enumerate(full_hand[:, 1]) if card != card_0[1]])
+                return 1 + card_0[1] / 15 + hc / 150
     return 0.
 
 
@@ -166,7 +167,7 @@ def get_points(player_hand: np.ndarray, table_hand: np.ndarray):
     """
     unsorted_full_hand = np.concatenate([player_hand, table_hand])
     full_hand = unsorted_full_hand[np.argsort(unsorted_full_hand[:, 1])[::-1]]
-    for check in [check_sf, check_fok, check_fh, check_flush, check_straight, check_tok, check_two_pairs, check_pair]:
+    for check in [check_sf, check_fok, check_fh, check_flush, check_straight, check_tok, check_pair]:
         points = check(full_hand)
         if points > 0:
             return points
