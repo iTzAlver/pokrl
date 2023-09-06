@@ -6,6 +6,9 @@
 # - x - x - x - x - x - x - x - x - x - x - x - x - x - x - #
 # Import statements:
 import logging
+
+import numpy as np
+
 from pokrl import CoreGame, __version__
 logging.basicConfig(level=logging.INFO)
 TIME_TO_PLAY = 10  # 10 minutes

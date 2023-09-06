@@ -12,7 +12,7 @@ from ..__special__ import __gui_cards_img__
 C2IN_P = {0: 'spades', 1: 'clubs', 2: 'diamonds', 3: 'hearts'}
 C2IN_N = {2: 2, 3: 3, 4: 4, 5: 5, 6: '6', 7: '7', 8: '8', 9: '9', 10: '10', 11: 'jack', 12: 'queen', 13: 'king',
           14: 'ace'}
-S2P = ['Highest card', 'Pair', 'Double pair', 'Three of a kind', 'Straight', 'Flush', 'Full house',
+S2P = ['Highest card', 'Pair', 'Two pair', 'Three of a kind', 'Straight', 'Flush', 'Full house',
        'Four of a kind', 'Straight flush']
 
 

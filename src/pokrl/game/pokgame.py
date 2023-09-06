@@ -7,6 +7,7 @@
 import numpy as np
 from ..__special__ import __version__
 from .decision_table import get_points
+from .decision_alg_2 import get_points_v2
 
 
 # - x - x - x - x - x - x - x - x - x - x - x - x - x - x - #
@@ -110,7 +111,7 @@ class CoreGame:
         # Get the points of the hand:
         points = list()
         for hand in hands:
-            points.append(get_points(hand, self.table_cards))
+            points.append(get_points_v2(hand, self.table_cards))
         # Get the argument of the winner:
         winner = np.argmax(points)
         return winner, points
