@@ -82,7 +82,7 @@ def evaluate_poker_hand(full_hand):
             if (card + 1 in cards_with_flush and card + 2 in cards_with_flush and card + 3 in
                     cards_with_flush and card + 4 in cards_with_flush):
                 return 8. + max(cards_with_flush) / 15
-        return 5. + sum([card / (15 * 15 ** i) for i, card in enumerate(cards_with_flush[:, 1])])
+        return 5. + sum([card / (15 * 15 ** i) for i, card in enumerate(cards_with_flush)])
 
     elif max_count == 4:  # Four of a kind [x]
         # Get the card that its max_count is 4:
@@ -109,7 +109,7 @@ def evaluate_poker_hand(full_hand):
                 cards_with_flush.append(card & RANK_MASK)
         # Sort the cards with flush:
         cards_with_flush.sort(reverse=True)
-        return 5. + sum([card / (15 * 15 ** i) for i, card in enumerate(cards_with_flush[:, 1])])
+        return 5. + sum([card / (15 * 15 ** i) for i, card in enumerate(cards_with_flush)])
 
     elif is_straight:  # Straight [x]
         # Get the highest card with straight:
