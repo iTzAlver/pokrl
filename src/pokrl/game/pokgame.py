@@ -109,11 +109,7 @@ class CoreGame:
         :return: Winner of the game.
         """
         # Get the points of the hand:
-        points = list()
-        for hand in hands:
-            points.append(get_points_v2(hand, self.table_cards))
-        # Get the argument of the winner:
-        winner = np.argmax(points)
+        winner, points = get_points_v2(hands, self.table_cards)
         return winner, points
 
     def __repr__(self):
