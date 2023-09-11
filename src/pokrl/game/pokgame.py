@@ -6,14 +6,12 @@
 # - x - x - x - x - x - x - x - x - x - x - x - x - x - x - #
 import numpy as np
 from ..__special__ import __version__
-from .decision_table import get_points
 from .decision_alg_2 import get_points_v2
 
 
 # - x - x - x - x - x - x - x - x - x - x - x - x - x - x - #
 class CoreGame:
-    def __init__(self, number_of_players: int = 9, level_up_each: int = 4, initial_stack: int = 250,
-                 level_table: np.ndarray = np.array([]), game_seed: int = None):
+    def __init__(self, number_of_players: int = 9, game_seed: int = None):
         """
         The CoreGame class is the main class of the game. It contains the main logic of the game. The game is
         parametrized by 4 parameters [3 int, 1 matrix]:
@@ -23,20 +21,13 @@ class CoreGame:
         The stack is normalized to Big Blinds (BBs).
 
         :param number_of_players: Number of maximum players allowed in the game.
-        :param level_up_each: Number of hands to play before the blinds level up.
-        :param initial_stack: Initial stack for each player.
-        :param level_table: Table of blinds and antes for each level. [level] -> [small_blind, big_blind, ante]
         :param game_seed: Seed for the game.
         """
         # Game main parameters:
         self.__version__ = __version__
         self.number_of_players = number_of_players
-        self.level_up_each = level_up_each
-        self.initial_stack = initial_stack
-        self.level_up_table = level_table
         self.__game_seed = game_seed
         # Game state parameters:
-        self.current_level = 0
         self.deck_pointer = 0
         self.table_cards = np.array([])
         # + Create an array with 52 cards (from 2 to 14 and from 1 to 4):

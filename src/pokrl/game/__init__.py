@@ -5,7 +5,7 @@
 #                                                           #
 # - x - x - x - x - x - x - x - x - x - x - x - x - x - x - #
 from .pokgame import CoreGame
-from .decision_table import get_points
+from .decision_alg_2 import get_points_v2
 # - x - x - x - x - x - x - x - x - x - x - x - x - x - x - #
 #                        END OF FILE                        #
 # - x - x - x - x - x - x - x - x - x - x - x - x - x - x - #
